@@ -1,16 +1,19 @@
 package com.example.moviecharacters.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Franchise {
     @Id
-    @Column(name = "franchise_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "franchise_name", length = 50, nullable = false)
     private String name;
     @Column(name = "description", columnDefinition="TEXT")
     private String description;
+    @Column(name = "movie")
+    @OneToMany(mappedBy = "franchise")
+    private Set<Movie> movieSet;
 }
