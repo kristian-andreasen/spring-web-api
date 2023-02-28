@@ -2,6 +2,7 @@ package com.example.moviecharacters.models;
 
 import jakarta.persistence.*;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
 @Table(name = "tb_movie")
 public class Movie {
 
@@ -35,8 +37,9 @@ public class Movie {
     @ManyToMany
             //(mappedBy = "movie")
     private Set<Character> character;
-    @Column(name = "franchise", length = 50)
-    private String franchise;
+
+    @ManyToOne
+    private Franchise franchise;
 
     @Override
     public String toString() {
@@ -49,7 +52,7 @@ public class Movie {
                 ", movie_picture='" + movie_picture + '\'' +
                 ", trailer='" + trailer + '\'' +
                 ", character=" + character +
-                ", franchise='" + franchise + '\'' +
+              //  ", franchise='" + franchise + '\'' +
                 '}';
     }
 }

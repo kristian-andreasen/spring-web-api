@@ -1,4 +1,8 @@
 package com.example.moviecharacters.repositories;
 
-public interface CharacterRepository {
+import com.example.moviecharacters.models.Character;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CharacterRepository extends JpaRepository<Character, Integer> {
 }
