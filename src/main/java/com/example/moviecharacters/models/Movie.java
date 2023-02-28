@@ -2,16 +2,20 @@ package com.example.moviecharacters.models;
 
 import jakarta.persistence.*;
 
-import org.hibernate.mapping.List;
+import lombok.Getter;
+import lombok.Setter;
 
-
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.Set;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_movie")
 public class Movie {
+
+    public Movie() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -34,4 +38,18 @@ public class Movie {
     @Column(name = "franchise", length = 50)
     private String franchise;
 
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", genre='" + genre + '\'' +
+                ", release_year=" + release_year +
+                ", director='" + director + '\'' +
+                ", movie_picture='" + movie_picture + '\'' +
+                ", trailer='" + trailer + '\'' +
+                ", character=" + character +
+                ", franchise='" + franchise + '\'' +
+                '}';
+    }
 }
