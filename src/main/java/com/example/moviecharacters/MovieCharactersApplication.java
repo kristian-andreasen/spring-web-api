@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 //(exclude = {DataSourceAutoConfiguration.class })
 @SpringBootApplication
 public class MovieCharactersApplication implements ApplicationRunner {
-    @Autowired
+
     MovieRepository movieRepository;
 
     public static void main(String[] args) {
