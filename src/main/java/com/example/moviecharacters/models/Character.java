@@ -2,9 +2,13 @@ package com.example.moviecharacters.models;
 
 import com.example.moviecharacters.enums.Gender;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
 
+@Getter
+@Setter
 @Entity
 public class Character {
     @Id
