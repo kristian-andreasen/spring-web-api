@@ -1,5 +1,6 @@
 package com.example.moviecharacters.services;
 
+import com.example.moviecharacters.models.Character;
 import com.example.moviecharacters.models.Movie;
 import com.example.moviecharacters.repositories.MovieRepository;
 import org.slf4j.Logger;
@@ -19,8 +20,8 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movie findById(Integer integer) {
-        return movieRepository.findById(integer).get();
+    public Movie findById(Integer id) {
+        return movieRepository.findById(id).get();
     }
 
     @Override
@@ -35,20 +36,21 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie update(Movie entity) {
-
-        Movie getit = movieRepository.findById(entity.getId()).get();
-
-
-        return null;
+        return movieRepository.save(entity);
     }
 
     @Override
-    public void deleteById(Integer integer) {
-
+    public void deleteById(Integer id) {
+        if (movieRepository.existsById(id)) {
+            Movie movie = movieRepository.findById(id).get();
+            movie.getCharacterSet().forEach(s -> s.setMovieSet(null));
+            movie.getCharacterSet().forEach(s -> s.setMovieSet(null));
+            movieRepository.delete(movie);
+        } else {
+            logger.warn("No character exists with ID: " + id);
+            movieRepository.deleteById(id);
+        }
     }
 
-    @Override
-    public void delete(Movie entity) {
 
-    }
 }
