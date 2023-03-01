@@ -25,7 +25,7 @@ public class Character {
     private String character_picture;
 
     @Column(name = "movie")
-    @ManyToMany(mappedBy = "character")
+    @ManyToMany(mappedBy = "characterSet")
     private Set<Movie> movieSet;
 
 

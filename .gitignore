@@ -112,3 +112,6 @@ fabric.properties
 
 # Environment file
 .env
+
+#General
+.DS_Store

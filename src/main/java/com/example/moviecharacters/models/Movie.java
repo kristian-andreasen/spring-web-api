@@ -52,7 +52,7 @@ public class Movie {
                 ", movie_picture='" + movie_picture + '\'' +
                 ", trailer='" + trailer + '\'' +
                 ", character=" + characterSet +
-              //  ", franchise='" + franchise + '\'' +
+                ", franchise='" + franchise + '\'' +
                 '}';
     }
 }
