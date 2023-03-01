@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 
@@ -28,7 +29,7 @@ public class CharacterServiceImpl implements CharacterService {
     }
 
     @Override
-    public Collection<Character> findAll() {
+    public List<Character> findAll() {
         return characterRepository.findAll();
     }
 
@@ -46,8 +47,7 @@ public class CharacterServiceImpl implements CharacterService {
     public void deleteById(Integer id) {
         if (characterRepository.existsById(id)) {
             Character character = characterRepository.findById(id).get();
-            character.getMovieSet().forEach(s -> s.setCharacterSet(null));
-            character.getMovieSet().forEach(s -> s.setCharacterSet(null));
+            character.getMovieSet().forEach(s -> s.getCharacterSet().forEach(c -> c = null));
             characterRepository.delete(character);
         } else {
             logger.warn("No character exists with ID: " + id);

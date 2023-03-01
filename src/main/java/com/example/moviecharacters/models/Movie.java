@@ -34,7 +34,12 @@ public class Movie {
     @Column(name = "trailer", length = 500)
     private String trailer;
     @Column(name = "character")
-    @ManyToMany
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "tb_movie_character_set",
+            joinColumns = { @JoinColumn(name = "movie_set_id") },
+            inverseJoinColumns = { @JoinColumn(name = "character_set_id") }
+    )
             //(mappedBy = "movie")
     private Set<Character> characterSet;
 

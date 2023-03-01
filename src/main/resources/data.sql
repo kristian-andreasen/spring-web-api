@@ -29,3 +29,17 @@ INSERT INTO character (alias, character_gender, character_picture, full_name)
 VALUES('Anakin Skywalker', 'male', NULL, 'Darth Vader'),
 (NULL, 'male', NULL, 'Dobby'),
 (NULL, 'female', NULL, 'Short Round');
+
+
+INSERT INTO tb_movie_character_set (movie_set_id, character_set_id)
+VALUES (1,1),
+ (2,1),
+ (3,1),
+ (6,1),
+ (8,2),
+ (12,3);
+
+
+
+
+
