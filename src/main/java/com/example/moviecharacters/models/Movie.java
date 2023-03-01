@@ -36,7 +36,7 @@ public class Movie {
     @Column(name = "character")
     @ManyToMany
             //(mappedBy = "movie")
-    private Set<Character> character;
+    private Set<Character> characterSet;
 
     @ManyToOne
     private Franchise franchise;
@@ -51,7 +51,7 @@ public class Movie {
                 ", director='" + director + '\'' +
                 ", movie_picture='" + movie_picture + '\'' +
                 ", trailer='" + trailer + '\'' +
-                ", character=" + character +
+                ", character=" + characterSet +
               //  ", franchise='" + franchise + '\'' +
                 '}';
     }

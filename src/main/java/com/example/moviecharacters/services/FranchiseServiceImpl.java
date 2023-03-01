@@ -21,8 +21,8 @@ public class FranchiseServiceImpl implements FranchiseService {
     }
 
     @Override
-    public Franchise findById(Integer integer) {
-        return franchiseRepository.findById(integer).get();
+    public Franchise findById(Integer id) {
+        return franchiseRepository.findById(id).get();
     }
 
     @Override
@@ -37,16 +37,13 @@ public class FranchiseServiceImpl implements FranchiseService {
 
     @Override
     public Franchise update(Franchise entity) {
-        return null;
+        return franchiseRepository.save(entity);
     }
 
     @Override
-    public void deleteById(Integer integer) {
-        franchiseRepository.deleteById(integer);
+    public void deleteById(Integer id) {
+        franchiseRepository.deleteById(id);
     }
 
-    @Override
-    public void delete(Franchise entity) {
-        franchiseRepository.delete(entity);
-    }
+
 }
