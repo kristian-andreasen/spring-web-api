@@ -43,6 +43,11 @@ public class CharacterServiceImpl implements CharacterService {
     }
 
     @Override
+    public void deleteById(Integer integer) {
+
+    }
+
+    /*@Override
     public void deleteById(Integer id) {
         if (characterRepository.existsById(id)) {
             Character character = characterRepository.findById(id).get();
@@ -53,6 +58,6 @@ public class CharacterServiceImpl implements CharacterService {
             logger.warn("No character exists with ID: " + id);
             characterRepository.deleteById(id);
         }
-}
+    }*/
 
 }

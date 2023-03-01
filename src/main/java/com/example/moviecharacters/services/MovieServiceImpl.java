@@ -40,6 +40,11 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public void deleteById(Integer integer) {
+
+    }
+
+    /*@Override
     public void deleteById(Integer id) {
         if (movieRepository.existsById(id)) {
             Movie movie = movieRepository.findById(id).get();
@@ -50,7 +55,7 @@ public class MovieServiceImpl implements MovieService {
             logger.warn("No character exists with ID: " + id);
             movieRepository.deleteById(id);
         }
-    }
+    }*/
 
 
 }

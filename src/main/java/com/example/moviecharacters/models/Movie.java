@@ -6,13 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @Entity
 @AllArgsConstructor
-@Table(name = "tb_movie")
+@Table(name = "movies")
 public class Movie {
 
     public Movie() {
@@ -33,12 +34,16 @@ public class Movie {
     private String movie_picture;
     @Column(name = "trailer", length = 500)
     private String trailer;
-    @Column(name = "character")
-    @ManyToMany
-            //(mappedBy = "movie")
-    private Set<Character> characterSet;
 
+    @ManyToMany
+    @JoinTable(name = "movies_characters",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "character_id"))
+    private Set<Character> characters = new HashSet<>();
+
+    // Foreign key is configured by setting name property of @JoinColumn.
     @ManyToOne
+    @JoinColumn(name = "franchise_id")
     private Franchise franchise;
 
     @Override
@@ -51,7 +56,7 @@ public class Movie {
                 ", director='" + director + '\'' +
                 ", movie_picture='" + movie_picture + '\'' +
                 ", trailer='" + trailer + '\'' +
-                ", character=" + characterSet +
+                ", character=" + characters +
                 ", franchise='" + franchise + '\'' +
                 '}';
     }
