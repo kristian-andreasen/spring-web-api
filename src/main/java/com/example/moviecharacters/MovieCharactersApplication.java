@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @SpringBootApplication
 public class MovieCharactersApplication implements ApplicationRunner {
 
-    MovieRepository movieRepository;
+
 
     public static void main(String[] args) {
         SpringApplication.run(MovieCharactersApplication.class, args);
