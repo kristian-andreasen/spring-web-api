@@ -51,7 +51,7 @@ public class CharacterServiceImpl implements CharacterService {
     public void deleteById(Integer id) {
         if (characterRepository.existsById(id)) {
             Character character = characterRepository.findById(id).get();
-            character.getMovieSet().forEach(m -> m.getCharacterSet().remove(character));
+            character.getMovies().forEach(m -> m.getCharacters().remove(character));
             characterRepository.delete(character);
         } else {
             logger.warn("No character exists with ID: " + id);

@@ -45,7 +45,7 @@ public class FranchiseController {
         existingFranchise.setId(updatedFranchise.getId());
         existingFranchise.setName(updatedFranchise.getName());
         existingFranchise.setDescription(updatedFranchise.getDescription());
-        existingFranchise.setMovieSet(updatedFranchise.getMovieSet());
+        existingFranchise.setMovies(updatedFranchise.getMovies());
 
         //not sure about this though...
         return franchiseRepository.save(existingFranchise);

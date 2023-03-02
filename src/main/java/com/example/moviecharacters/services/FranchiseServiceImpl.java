@@ -3,6 +3,7 @@ package com.example.moviecharacters.services;
 import com.example.moviecharacters.models.Franchise;
 import com.example.moviecharacters.repositories.CharacterRepository;
 import com.example.moviecharacters.repositories.FranchiseRepository;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -41,8 +42,16 @@ public class FranchiseServiceImpl implements FranchiseService {
     }
 
     @Override
+     @Transactional
     public void deleteById(Integer id) {
-        franchiseRepository.deleteById(id);
+        if(franchiseRepository.existsById(id)) {
+            Franchise fran = franchiseRepository.findById(id).get();
+            fran.getMovies().forEach(m -> m.setFranchise(null));
+            franchiseRepository.delete(fran);
+        }
+        else {
+            logger.warn("No professor exists with ID: " + id);
+        }
     }
 
 

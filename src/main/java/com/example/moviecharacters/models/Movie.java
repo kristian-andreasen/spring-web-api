@@ -39,7 +39,7 @@ public class Movie {
     @JoinTable(name = "movies_characters",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "character_id"))
-    private Set<Character> characters = new HashSet<>();
+    private Set<Character> characters;
 
     // Foreign key is configured by setting name property of @JoinColumn.
     @ManyToOne

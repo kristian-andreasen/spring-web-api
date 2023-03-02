@@ -31,7 +31,7 @@ public class Character {
     private String character_picture;
 
     @ManyToMany(mappedBy = "characters")
-    private Set<Movie> movies = new HashSet<>();
+    private Set<Movie> movies;
 
 
 }

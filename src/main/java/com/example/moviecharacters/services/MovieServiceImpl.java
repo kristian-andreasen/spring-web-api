@@ -47,7 +47,7 @@ public class MovieServiceImpl implements MovieService {
     public void deleteById(Integer id) {
         if (movieRepository.existsById(id)) {
             Movie movie = movieRepository.findById(id).get();
-            movie.getCharacterSet().forEach(s -> s.getMovieSet().remove(movie));
+            movie.getCharacters().forEach(s -> s.getMovies().remove(movie));
             movieRepository.delete(movie);
         } else {
             logger.warn("No character exists with ID: " + id);
