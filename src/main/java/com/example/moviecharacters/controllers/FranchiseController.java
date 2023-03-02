@@ -8,6 +8,9 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+import java.util.List;
+
 @RequestMapping("/api/v1/franchises") //base path
 @RestController
 public class FranchiseController {
@@ -20,10 +23,17 @@ public class FranchiseController {
     }
 
     /*@GetMapping()
-    public ResponseEntity<FranchiseGetDTO> getAllFranchises() {
+    public List<ResponseEntity<FranchiseGetDTO>> getAllFranchises() {
         FranchiseGetDTO franchiseGetDTO = franchiseMapper.toFranchiseDto(franchiseService.findAll());
-        return ResponseEntity.ok(franchiseGetDTO);
+        return List<ResponseEntity.ok(franchiseGetDTO)>;
     }*/
+    @GetMapping()
+    public ResponseEntity getAll() {
+        Collection<FranchiseGetDTO> studs = franchiseMapper.toFranchiseDto(
+                franchiseService.findAll());
+        return ResponseEntity.ok(studs);
+    }
+
 
 
     @GetMapping("/{id}")
@@ -54,6 +64,5 @@ public class FranchiseController {
     @DeleteMapping("/{id}")
     public void deleteFranchise(@PathVariable int id) {
         franchiseService.deleteById(id);
-
     }
 }
