@@ -1,5 +1,5 @@
 package com.example.moviecharacters.mappers;
-import com.example.moviecharacters.dto.character.MovieGetDTO;
+import com.example.moviecharacters.dto.MovieGetDTO;
 import com.example.moviecharacters.models.Character;
 import com.example.moviecharacters.models.Movie;
 import org.mapstruct.Mapper;

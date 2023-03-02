@@ -1,7 +1,6 @@
 package com.example.moviecharacters.controllers;
 
-import com.example.moviecharacters.dto.character.FranchiseGetDTO;
-import com.example.moviecharacters.dto.character.MovieGetDTO;
+import com.example.moviecharacters.dto.MovieGetDTO;
 import com.example.moviecharacters.mappers.MovieMapper;
 import com.example.moviecharacters.services.MovieServiceImpl;
 import org.springframework.http.ResponseEntity;

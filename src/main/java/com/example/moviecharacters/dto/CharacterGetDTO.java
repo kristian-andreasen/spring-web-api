@@ -1,4 +1,4 @@
-package com.example.moviecharacters.dto.character;
+package com.example.moviecharacters.dto;
 import com.example.moviecharacters.enums.Gender;
 
 import com.example.moviecharacters.models.Movie;
