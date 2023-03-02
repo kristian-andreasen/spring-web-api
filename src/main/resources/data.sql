@@ -32,7 +32,23 @@ VALUES('Anakin Skywalker', 'male', NULL, 'Darth Vader'),
 (NULL, 'male', NULL, 'Dobby'),
 (NULL, 'female', NULL, 'Short Round');
 
+
 -- Insert some initial character-movie relationships
 INSERT INTO movies_characters (movie_id, character_id) VALUES (1, 1);
 INSERT INTO movies_characters (movie_id, character_id) VALUES (2, 2);
 INSERT INTO movies_characters (movie_id, character_id) VALUES (3, 3);
+
+
+INSERT INTO tb_movie_character_set (movie_set_id, character_set_id)
+VALUES (1,1),
+ (2,1),
+ (3,1),
+ (6,1),
+ (8,2),
+ (12,3);
+
+
+
+
+
+

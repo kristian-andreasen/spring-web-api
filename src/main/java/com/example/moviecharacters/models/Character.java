@@ -33,4 +33,5 @@ public class Character {
     @ManyToMany(mappedBy = "characters")
     private Set<Movie> movies = new HashSet<>();
 
+
 }
