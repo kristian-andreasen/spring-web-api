@@ -36,7 +36,7 @@ public class AppRunner implements ApplicationRunner {
         characterService.add(character);
         character.setCharacter_gender(Gender.female);
         characterService.update(character);
-        //characterService.deleteById(1);
+        characterService.deleteById(1);
 
         movieService.findAll();
         movieService.findById(1);
@@ -45,15 +45,15 @@ public class AppRunner implements ApplicationRunner {
         movieService.add(movie);
         movie.setGenre("Action");
         movieService.update(movie);
-        //movieService.deleteById(1);
+        movieService.deleteById(1);
 
-        franchiseService.findAll();
+        System.out.println(franchiseService.findAll());
         franchiseService.findById(1);
         Franchise franchise = new Franchise();
         franchise.setName("Spy Kids");
         franchiseService.add(franchise);
         franchise.setDescription("the best franchise ever!!!");
         franchiseService.update(franchise);
-        //franchiseService.deleteById(1);
+        franchiseService.deleteById(1);
         }
 }

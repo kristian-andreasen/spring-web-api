@@ -3,6 +3,7 @@ package com.example.moviecharacters.services;
 import com.example.moviecharacters.models.Character;
 import com.example.moviecharacters.models.Movie;
 import com.example.moviecharacters.repositories.CharacterRepository;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -44,10 +45,11 @@ public class CharacterServiceImpl implements CharacterService {
     }
 
     @Override
+    @Transactional
     public void deleteById(Integer id) {
         if (characterRepository.existsById(id)) {
             Character character = characterRepository.findById(id).get();
-            character.getMovieSet().forEach(s -> s.getCharacterSet().forEach(c -> c = null));
+            character.getMovieSet().forEach(m -> m.getCharacterSet().remove(character));
             characterRepository.delete(character);
         } else {
             logger.warn("No character exists with ID: " + id);
