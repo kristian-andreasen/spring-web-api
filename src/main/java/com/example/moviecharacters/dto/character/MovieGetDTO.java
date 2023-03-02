@@ -1,5 +1,7 @@
 package com.example.moviecharacters.dto.character;
 
+import com.example.moviecharacters.models.Character;
+import com.example.moviecharacters.models.Franchise;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,5 +19,10 @@ public class MovieGetDTO {
     private String director;
     private String movie_picture;
     private String trailer;
+    private int franchise;
     private Set<Integer> characters; //Integer?
+
+    public int getId(){
+        return id;
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.moviecharacters.dto.character;
 import com.example.moviecharacters.enums.Gender;
 
+import com.example.moviecharacters.models.Movie;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,5 +17,5 @@ public class CharacterGetDTO {
     private Gender character_gender;
     private String alias;
     private String character_picture;
-    private Set<Integer> movies; //Integer or Movie?
+    private Set<Movie> movies; //Integer or Movie?
 }
