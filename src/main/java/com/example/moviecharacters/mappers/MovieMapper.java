@@ -1,9 +1,12 @@
 package com.example.moviecharacters.mappers;
+import com.example.moviecharacters.dto.MovieCreateDTO;
 import com.example.moviecharacters.dto.MovieGetDTO;
+import com.example.moviecharacters.dto.MovieUpdateDTO;
 import com.example.moviecharacters.models.Character;
 import com.example.moviecharacters.models.Movie;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;
 
 
@@ -16,6 +19,10 @@ public interface MovieMapper {
     @Mapping(target = "franchise", source = "franchise.id")
     @Mapping(target = "characters", source = "characters", qualifiedByName = "charactersToIds")
     MovieGetDTO toMovieDto(Movie movie);
+
+    Movie toMovie(MovieCreateDTO movieCreateDTO);
+
+    void updateMovieFromDto(MovieUpdateDTO movieUpdateDTO, @MappingTarget Movie movie);
     
     /*default Movie toMovie(MovieGetDTO dto) {
 
