@@ -29,7 +29,7 @@ public class AppRunner implements ApplicationRunner {
         public void run(ApplicationArguments args) throws Exception {
 
 
-        characterService.findAll();
+        /*characterService.findAll();
         characterService.findById(1);
         Character character = new Character();
         character.setFull_name("Kristian Andreasen");
@@ -54,6 +54,6 @@ public class AppRunner implements ApplicationRunner {
         franchiseService.add(franchise);
         franchise.setDescription("the best franchise ever!!!");
         franchiseService.update(franchise);
-        franchiseService.deleteById(1);
+        franchiseService.deleteById(1);*/
         }
 }
