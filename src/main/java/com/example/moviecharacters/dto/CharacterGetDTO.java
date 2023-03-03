@@ -1,4 +1,4 @@
-package com.example.moviecharacters.dto.character;
+package com.example.moviecharacters.dto;
 import com.example.moviecharacters.enums.Gender;
 
 import com.example.moviecharacters.models.Movie;
@@ -17,5 +17,5 @@ public class CharacterGetDTO {
     private Gender character_gender;
     private String alias;
     private String character_picture;
-    private Set<Movie> movies; //Integer or Movie?
+    private Set<Integer> movieIds; //set of movies related to characters
 }

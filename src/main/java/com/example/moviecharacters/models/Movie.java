@@ -12,12 +12,11 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@AllArgsConstructor
+
 @Table(name = "movies")
 public class Movie {
 
-    public Movie() {
-    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
