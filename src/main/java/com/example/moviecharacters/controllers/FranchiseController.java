@@ -1,5 +1,6 @@
 package com.example.moviecharacters.controllers;
 import com.example.moviecharacters.dto.FranchiseCreateDTO;
+import com.example.moviecharacters.dto.FranchiseDTO;
 import com.example.moviecharacters.dto.FranchiseGetDTO;
 import com.example.moviecharacters.dto.FranchiseUpdateDTO;
 import com.example.moviecharacters.mappers.FranchiseMapper;
@@ -99,11 +100,9 @@ public class FranchiseController {
 
     @Operation(summary = "Delete franchise")
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteFranchise(@PathVariable int id) {
-
-        if (franchiseService.findById(id) == null) {
+    public ResponseEntity deleteFranchise(@RequestBody FranchiseDTO franchiseDTO, @PathVariable int id) {
+        if(id != franchiseDTO.getId())
             return ResponseEntity.notFound().build();
-        }
 
         franchiseService.deleteById(id);
         return ResponseEntity.ok().build();
