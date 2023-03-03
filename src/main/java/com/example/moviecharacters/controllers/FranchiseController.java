@@ -99,7 +99,7 @@ public class FranchiseController {
         return ResponseEntity.ok().build();
     }
 
-
+    @Operation(summary = "Updates the movies in a franchise")
     @PutMapping("/updateMoviesWhereId={id}")
     public ResponseEntity<FranchiseGetDTO> updateMoviesInFranchise(@PathVariable Integer id, @RequestBody Set<Integer> movieIds) {
 
