@@ -4,24 +4,28 @@ import com.example.moviecharacters.dto.MovieCreateDTO;
 import com.example.moviecharacters.dto.MovieGetDTO;
 import com.example.moviecharacters.dto.MovieUpdateDTO;
 import com.example.moviecharacters.mappers.MovieMapper;
+import com.example.moviecharacters.models.Character;
 import com.example.moviecharacters.models.Movie;
+import com.example.moviecharacters.services.CharacterServiceImpl;
 import com.example.moviecharacters.services.MovieServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RequestMapping("/api/v1/movies") //base path
 @RestController
 public class MovieController {
     private final MovieServiceImpl movieService;
+    private final CharacterServiceImpl characterService;
     private final MovieMapper movieMapper;
 
 
-    public MovieController(MovieServiceImpl movieService, MovieMapper movieMapper) {
+    public MovieController(MovieServiceImpl movieService, CharacterServiceImpl characterService, MovieMapper movieMapper) {
         this.movieService = movieService;
+        this.characterService = characterService;
         this.movieMapper = movieMapper;
     }
 
@@ -55,6 +59,24 @@ public class MovieController {
             return ResponseEntity.notFound().build();
         }
         movieMapper.updateMovieFromDto(movieUpdateDTO, movie);
+        movieService.update(movie);
+        MovieGetDTO movieDTO = movieMapper.toMovieDto(movie);
+        return ResponseEntity.ok(movieDTO);
+    }
+
+
+    @PutMapping("/updateCharactersWhereId={id}")
+    public ResponseEntity<MovieGetDTO> updateCharactersInMovie(@PathVariable Integer id, @RequestBody Set<Integer> characterIds) {
+
+       Movie movie = movieService.findById(id);
+       List<Integer> characterIdList = new ArrayList<>(characterIds);
+       Set<Character> characters = new HashSet<>();
+
+       for(int i = 0; i < characterIds.size(); i++){
+           characters.add(characterService.findById(characterIdList.get(i)));
+       }
+
+        movie.setCharacters(characters);
         movieService.update(movie);
         MovieGetDTO movieDTO = movieMapper.toMovieDto(movie);
         return ResponseEntity.ok(movieDTO);

@@ -1,30 +1,31 @@
 package com.example.moviecharacters.controllers;
-import com.example.moviecharacters.dto.FranchiseCreateDTO;
-import com.example.moviecharacters.dto.FranchiseDTO;
-import com.example.moviecharacters.dto.FranchiseGetDTO;
-import com.example.moviecharacters.dto.FranchiseUpdateDTO;
+import com.example.moviecharacters.dto.*;
 import com.example.moviecharacters.mappers.FranchiseMapper;
+import com.example.moviecharacters.models.Character;
 import com.example.moviecharacters.models.Franchise;
+import com.example.moviecharacters.models.Movie;
 import com.example.moviecharacters.services.FranchiseServiceImpl;
+import com.example.moviecharacters.services.MovieServiceImpl;
 import com.example.moviecharacters.util.ApiErrorResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+import java.util.*;
 
 @RequestMapping("/api/v1/franchises") //base path
 @RestController
 public class FranchiseController {
     private final FranchiseServiceImpl franchiseService;
+    private final MovieServiceImpl movieService;
     private final FranchiseMapper franchiseMapper;
 
-    public FranchiseController(FranchiseServiceImpl franchiseService,FranchiseMapper franchiseMapper) {
+    public FranchiseController(FranchiseServiceImpl franchiseService, MovieServiceImpl movieService, FranchiseMapper franchiseMapper) {
+        this.movieService = movieService;
         this.franchiseMapper = franchiseMapper;
         this.franchiseService = franchiseService;
     }
@@ -96,6 +97,27 @@ public class FranchiseController {
         franchiseService.add(franchise);
 
         return ResponseEntity.ok().build();
+    }
+
+
+    @PutMapping("/updateMoviesWhereId={id}")
+    public ResponseEntity<FranchiseGetDTO> updateMoviesInFranchise(@PathVariable Integer id, @RequestBody Set<Integer> movieIds) {
+
+        Franchise franchise = franchiseService.findById(id);
+
+     //   Set<Movie> movies = new HashSet<>();
+
+        for(int i : movieIds){
+         //   movies.add(movieService.findById(i));
+           Movie movie = movieService.findById(i);
+           movie.setFranchise(franchiseService.findById(id));
+           movieService.update(movie);
+        }
+
+       // franchise.setMovies(movies);
+        //franchiseService.update(franchise);
+        FranchiseGetDTO franchiseDTO = franchiseMapper.toFranchiseDto(franchise);
+        return ResponseEntity.ok(franchiseDTO);
     }
 
     @Operation(summary = "Delete franchise")
