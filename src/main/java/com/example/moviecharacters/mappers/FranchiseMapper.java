@@ -1,5 +1,6 @@
 package com.example.moviecharacters.mappers;
 
+import com.example.moviecharacters.dto.FranchiseDTO;
 import com.example.moviecharacters.dto.FranchiseGetDTO;
 import com.example.moviecharacters.models.Franchise;
 import com.example.moviecharacters.models.Movie;
@@ -13,6 +14,11 @@ import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface FranchiseMapper {
+    FranchiseDTO franchiseDTO(Franchise franchise);
+
+    @Mapping(target = "movies", ignore = true)
+    Franchise franchiseDtoToFranchise(FranchiseDTO franchiseDTO);
+
     /**
      * Maps a Franchise entity to a FranchiseGetDTO data transfer object.
      * The 'movies' field in the Franchise entity is mapped to the 'movies' field in the FranchiseGetDTO object

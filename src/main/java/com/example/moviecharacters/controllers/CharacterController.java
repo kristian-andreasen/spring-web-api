@@ -60,7 +60,7 @@ public class CharacterController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCharacter(@PathVariable int id) {
+    public ResponseEntity<Void> deleteCharacter(@PathVariable Integer id) {
         characterService.deleteById(id);
         return ResponseEntity.noContent().build();
 
