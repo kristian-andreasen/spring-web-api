@@ -1,4 +1,5 @@
 package com.example.moviecharacters.mappers;
+import com.example.moviecharacters.dto.CharacterIdsDTO;
 import com.example.moviecharacters.dto.MovieCreateDTO;
 import com.example.moviecharacters.dto.MovieGetDTO;
 import com.example.moviecharacters.dto.MovieUpdateDTO;
@@ -23,8 +24,11 @@ public interface MovieMapper {
     @Mapping(target = "characters", ignore = true)
     Movie toMovie(MovieCreateDTO movieCreateDTO);
 
-    @Mapping(target = "characters", ignore = true)
+  //  @Mapping(target = "characters", ignore = true)
     void updateMovieFromDto(MovieUpdateDTO movieUpdateDTO, @MappingTarget Movie movie);
+
+  //  @Mapping(target = "characters", ignore = true)
+   // void updateCharactersInMovieFromDto(CharacterIdsDTO characterIdsDTO, @MappingTarget Movie movie);
     
     /*default Movie toMovie(MovieGetDTO dto) {
 
