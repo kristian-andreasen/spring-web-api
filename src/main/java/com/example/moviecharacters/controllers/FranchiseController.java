@@ -100,11 +100,8 @@ public class FranchiseController {
 
     @Operation(summary = "Delete franchise")
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteFranchise(@RequestBody FranchiseDTO franchiseDTO, @PathVariable int id) {
-        if(id != franchiseDTO.getId())
-            return ResponseEntity.notFound().build();
-
+    public ResponseEntity<Void> deleteFranchise(@PathVariable Integer id) {
         franchiseService.deleteById(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }
