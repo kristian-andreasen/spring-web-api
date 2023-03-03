@@ -20,8 +20,10 @@ public interface MovieMapper {
     @Mapping(target = "characters", source = "characters", qualifiedByName = "charactersToIds")
     MovieGetDTO toMovieDto(Movie movie);
 
+    @Mapping(target = "characters", ignore = true)
     Movie toMovie(MovieCreateDTO movieCreateDTO);
 
+    @Mapping(target = "characters", ignore = true)
     void updateMovieFromDto(MovieUpdateDTO movieUpdateDTO, @MappingTarget Movie movie);
     
     /*default Movie toMovie(MovieGetDTO dto) {

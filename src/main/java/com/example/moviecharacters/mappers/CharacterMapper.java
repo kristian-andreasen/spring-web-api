@@ -20,7 +20,7 @@ public interface CharacterMapper {
     @Mapping(target = "movieIds", source = "movies", qualifiedByName = "mapMoviesToIds")
     CharacterGetDTO toCharacterDto(Character character);
 
-    Collection<CharacterGetDTO> toCharacterDto(Collection<Character> characters);
+  //  Collection<CharacterGetDTO> toCharacterDto(Collection<Character> characters);
 
     @Named("mapMoviesToIds")
     default Set<Integer> mapMoviesToIds(Set<Movie> source) {

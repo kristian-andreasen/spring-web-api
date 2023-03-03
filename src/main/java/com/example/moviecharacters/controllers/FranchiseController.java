@@ -99,7 +99,13 @@ public class FranchiseController {
 
     @Operation(summary = "Delete franchise")
     @DeleteMapping("/{id}")
-    public void deleteFranchise(@PathVariable int id) {
+    public ResponseEntity deleteFranchise(@PathVariable int id) {
+
+        if (franchiseService.findById(id) == null) {
+            return ResponseEntity.notFound().build();
+        }
+
         franchiseService.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }

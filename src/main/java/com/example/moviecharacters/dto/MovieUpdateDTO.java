@@ -11,7 +11,9 @@ import java.util.Set;
 @Setter
 public class MovieUpdateDTO {
     private String name;
-    private String description;
-    private Integer franchiseId;
-    private Set<Integer> characterIds;
+    private String genre;
+    private int release_year;
+    private String director;
+    private String movie_picture;
+    private String trailer;
 }
